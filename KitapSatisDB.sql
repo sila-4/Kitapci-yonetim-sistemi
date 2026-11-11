@@ -34,8 +34,8 @@ CREATE TABLE Kitaplar (
     YazarID INT NOT NULL,
     KategoriID INT NOT NULL,
     YayineviID INT NOT NULL,
-    Fiyat DECIMAL(18,2) NOT NULL CHECK (Fiyat >= 0), -- Eksi fiyat girilemez
-    StokMiktari INT NOT NULL DEFAULT 0 CHECK (StokMiktari >= 0), -- Stok eksiye düşemez
+    Fiyat DECIMAL(18,2) NOT NULL CHECK (Fiyat >= 0), 
+    StokMiktari INT NOT NULL DEFAULT 0 CHECK (StokMiktari >= 0), 
     FOREIGN KEY (YazarID) REFERENCES Yazarlar(YazarID),
     FOREIGN KEY (KategoriID) REFERENCES Kategoriler(KategoriID),
     FOREIGN KEY (YayineviID) REFERENCES Yayinevleri(YayineviID)
@@ -46,7 +46,7 @@ CREATE TABLE Siparisler (
     SiparisID INT PRIMARY KEY IDENTITY(1,1),
     KullaniciID INT NOT NULL,
     SiparisTarihi DATETIME DEFAULT GETDATE(),
-    ToplamTutar DECIMAL(18,2) NOT NULL DEFAULT 0, -- Trigger ile hesaplanacak
+    ToplamTutar DECIMAL(18,2) NOT NULL DEFAULT 0, 
     Durum NVARCHAR(50) DEFAULT 'Onay Bekliyor',
     FOREIGN KEY (KullaniciID) REFERENCES Kullanicilar(KullaniciID)
 );
